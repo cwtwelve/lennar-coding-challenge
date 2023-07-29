@@ -1,113 +1,115 @@
-import Image from 'next/image'
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	const menuItems = ["Product", "Features", "Marketplace", "Company"];
+	const [dropDownmenuOpen, setDropDownmenuOpen] = useState(false);
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	const getImage = (
+		id: string,
+		height: number,
+		width: number,
+		classNames: string
+	) => {
+		return (
+			<Image
+				className={classNames}
+				src={`/${id}.png`}
+				alt={id}
+				height={height}
+				width={width}
+			/>
+		);
+	};
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+	const openDropdownMenu = () => {
+		setDropDownmenuOpen(true);
+	};
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+	const closeDropdownMenu = () => {
+		setDropDownmenuOpen(false);
+	};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+	return (
+		<main className="p-4 page-container">
+			<div
+				className={`text-white flex items-center ${
+					dropDownmenuOpen && "opacity-25"
+				}`}
+			>
+				{getImage("Logo", 75, 75, "pr-4")}
+				<div className="hidden sm:flex items-center space-x-4">
+					{menuItems.map((menuItem) => (
+						<div key={menuItem}>{menuItem}</div>
+					))}
+				</div>
+				<div className="ml-auto hidden sm:flex items-center">
+					<div className="mr-4">Log in</div>
+					<button className="btn bg-gray-600 text-white normal-case font-normal border-none hover:bg-gray-700">
+						Start free trial
+					</button>
+				</div>
+				<div className="ml-auto sm:hidden">
+					<button
+						onClick={openDropdownMenu}
+						className="btn bg-inherit border-none hover:bg-gray-700"
+					>
+						{getImage("Hamburger-Icon", 25, 25, "")}
+					</button>
+				</div>
+			</div>
+			<div className="mt-40">
+				<div className="sm:text-6xl text-4xl font-bold text-white">
+					A better way to
+				</div>
+				<div className="sm:text-6xl text-4xl font-bold text-indigo-400">
+					ship web apps
+				</div>
+				<div className="text-white w-96 mt-2">
+					Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
+					qui Lorem cupidatat commodo. Elit sunt amet fugiat veniam
+					occaecat fugiat.
+				</div>
+				<input
+					type="text"
+					placeholder="Enter your email"
+					className="mt-10 input input-bordered w-full max-w-xs"
+				/>
+			</div>
+			{dropDownmenuOpen && (
+				<div className="dropdown-menu absolute top-0 left-0 w-full p-4">
+					<div className="w-full bg-white rounded p-4">
+						<div className="flex place-content-between items-center">
+							{getImage("Logo", 35, 35, "")}
+							<button
+								onClick={closeDropdownMenu}
+								className="btn bg-inherit border-none hover:bg-none"
+							>
+								{getImage("Close-Icon", 15, 15, "")}
+							</button>
+						</div>
+						{menuItems.map((menuItem) => (
+							<div key={menuItem} className="pt-4">
+								{menuItem}
+							</div>
+						))}
+						<button className="btn bg-primary text-white normal-case font-normal border-none hover:bg-blue-700 mt-6 w-full">
+							Start free trial
+						</button>
+						<div className="mt-6 text-center">
+							Existing customer?{" "}
+							<a
+								className="link font-semibold no-underline"
+								href="/"
+							>
+								Login
+							</a>
+						</div>
+					</div>
+				</div>
+			)}
+		</main>
+	);
 }
